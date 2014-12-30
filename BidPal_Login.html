@@ -1,0 +1,118 @@
+
+
+
+
+
+
+
+	
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport"
+			content="width=device-width, initial-scale=1"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script type="text/javascript">
+		var CONTEXT_PATH = "/Handheld";
+		var CONTEXT_PATH_SSL = "https://" + window.location.host + CONTEXT_PATH;
+	</script>
+	<title>BidPal: Login</title>
+	<link rel="stylesheet" href="http://bputil11.bidpal.net/resources/handheld-login.css"
+			type="text/css">
+	<script src="http://bputil11.bidpal.net/resources/handheld-login.js"></script>
+
+	<style>
+		body {
+			height: 350px;
+		}
+	</style>
+
+	
+</head>
+<body>
+<div id="mainbox">
+
+	<div class="loginHeader">
+		<div class="loginIcon">
+			<img src="http://planner11.bidpal.net/BidPal/img/bpe288133/orglogo-160x80-none.jpg"/>
+			<span>Welcome to The BidPal Foundation - Annual Bid Bash</span>
+		</div>
+	</div>
+	
+<div data-role="content">
+	
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38672083-1', 'bidpal.net');
+  ga('send', 'pageview');
+
+</script>
+	
+	
+	<form
+			action="/Handheld/login/page/searchSubmit.html"
+			method="POST">
+		<input type="hidden" name="deviceWidth" id="deviceWidth" value=""/>
+		<label for="searchTerm" class="lblText">Enter last name or bidder # and click Next.
+		</label>
+		<input type="text" name="searchTerm" id="searchTerm" value="" autocomplete="off"/>
+		<input type="submit" id="nextButton" class="btnGreen" value="Next"/>
+	</form>
+</div>
+<script type="text/javascript">
+	ready(function () {
+		document.getElementById("searchTerm").focus();
+		document.getElementById("deviceWidth").value = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+		//HACK: Prevent searching for parentheses DE740
+		document.getElementById("searchTerm").onkeypress = function (event) {
+			var regex1 = new RegExp("^[^)]+$");
+			var regex2 = new RegExp("^[^(]+$");
+			var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+			if (!regex1.test(key)) {
+				event.preventDefault();
+				return false;
+			} else if (!regex2.test(key)) {
+				event.preventDefault();
+				return false;
+			}
+		};
+	});
+</script>
+
+	
+			<span class="btnTips" style="cursor: default;">
+                    <div class="tipsButtonText">
+	                    <img src="http://bputil11.bidpal.net/resources/images/buddy-self-login-icon.png"/>
+	                    <span>Need Help?</span>
+                    </div>
+                    <div class="tipsButtonSubtext">Please look for a volunteer in a green lanyard or contact the organization.</div>
+             </span>
+	
+</div>
+<script type="text/javascript">
+	function checkForIncorrectDeviceTime() {
+		
+		var serverTime = new Date(1419084009062);
+		var deviceTime = new Date();
+		var timeDiff = Math.abs(serverTime - deviceTime);
+
+		if (timeDiff > 1000 * 60 * 60 * 24 * 2) {
+			// if more than 2 days difference, change background color to orange
+			//document.getElementById('mainbox').style.backgroundColor = 'orange';
+		}
+	}
+
+	ready(function () {
+		checkForIncorrectDeviceTime();
+		stopLinksFromOpeningNewSafariInstance();
+	});
+</script>
+</body>
+</html>
