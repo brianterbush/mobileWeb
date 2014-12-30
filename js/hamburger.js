@@ -14,7 +14,7 @@ jQuery(document).ready(function () {
                        //Open the menu
                        jQuery("#hamburger").click(function () {
                        							
-                                            	  $('#hamburger').animate({paddingLeft: '-=12px'});      
+                                            	  $('#hamburger').css({paddingLeft: '10px'});
                                                   jQuery('#content').css('min-height', jQuery(window).height());
                                                   
                                                   jQuery('nav').css('opacity', 1);
@@ -43,7 +43,7 @@ jQuery(document).ready(function () {
                        //close the menu
                        jQuery("#contentLayer").click(function () {
                                                      
-                                                     $('#hamburger').animate({paddingLeft: '+=12px'}); 
+                                                     $('#hamburger').css({paddingLeft: '10px'});
                                                      //enable all scrolling on mobile devices when menu is closed
                                                      jQuery('#container').unbind('touchmove');
                                                      
