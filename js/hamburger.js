@@ -70,6 +70,9 @@ function hideHamburger(pageAction) {
 	if(pageAction == "about"){
 		$('#iframe').attr('src', 'about.html');
 	}
+	if(pageAction == "mobilebidding"){
+		$('#iframe').attr('src', 'http://www.brianterbush.com/menu/BidPal_Login.html');
+	}
 	
 	
 	$('#hamburger').animate({paddingLeft: '+=12px'}); 
